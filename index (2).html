@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Divya Patil, a Java and Python backend developer: projects, skills, internships and contact details.">
+<title>Divya Patil Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #05060d;
+  --surface: #0a0d1a;
+  --surface-2: #10142a;
+  --line: #1b2140;
+  --fg: #e9edf9;
+  --muted: #8f98b6;
+  --cyan: #22d3ee;
+  --violet: #a78bfa;
+  --violet-deep: #7c5cf0;
+  --error: #ff6b81;
+  --font-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+.in {
+  width: 100%; max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--font-mono); }
+
+/* top bar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: rgba(5, 6, 13, .88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.bar .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { font-family: var(--font-display); font-weight: 800; text-decoration: none; letter-spacing: .01em; }
+.brand span { color: var(--cyan); }
+.bar nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.bar nav a { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); text-decoration: none; padding: 4px 0; }
+.bar nav a:hover { color: var(--cyan); }
+
+/* hero */
+.hero { position: relative; padding-block: 64px 72px; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; width: 520px; height: 520px; right: -140px; top: -120px; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(124, 92, 240, .22), rgba(34, 211, 238, .06) 60%, transparent 75%);
+}
+.hero .in { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; }
+.eyebrow { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .06em; color: var(--cyan); margin: 0 0 16px; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; line-height: .98; letter-spacing: -.02em; margin: 0;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+}
+h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.4rem); margin: 20px 0 0; max-width: 34ch; text-wrap: balance; }
+.sub { color: var(--muted); max-width: 52ch; margin: 16px 0 0; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-block; font-family: var(--font-mono); font-size: .85rem; font-weight: 500;
+  padding: 11px 18px; border-radius: 6px; text-decoration: none; border: 1px solid var(--line);
+}
+.btn.primary { background: var(--cyan); color: #031318; border-color: var(--cyan); }
+.btn.primary:hover { background: #5be3f5; }
+.btn.ghost { color: var(--fg); background: transparent; border-color: var(--violet-deep); }
+.btn.ghost:hover { background: rgba(124, 92, 240, .16); }
+.facts { display: flex; flex-wrap: wrap; gap: 20px 36px; margin: 36px 0 0; padding: 20px 0 0; border-top: 1px solid var(--line); }
+.facts div { min-width: 0; }
+.facts dt { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* sample log panel */
+.log { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(34, 211, 238, .04), 0 24px 60px rgba(0, 0, 0, .55); }
+.log-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+.log-head b { color: var(--violet); font-weight: 500; }
+.log-body { margin: 0; padding: 14px 0; font-family: var(--font-mono); font-size: .76rem; line-height: 1.9; overflow-x: auto; }
+.log-body span { display: block; white-space: nowrap; padding: 0 14px; border-left: 2px solid transparent; }
+.log-body .t { display: inline; padding: 0; color: #55608a; margin-right: 10px; }
+.lv { display: inline-block; min-width: 4.4ch; margin-right: 8px; }
+.i .lv { color: var(--muted); }
+.e { background: rgba(255, 107, 129, .08); border-left-color: var(--error) !important; animation: flag 3.2s ease-in-out infinite; }
+.e .lv { color: var(--error); }
+.a { background: rgba(34, 211, 238, .07); border-left-color: var(--cyan) !important; }
+.a .lv { color: var(--cyan); }
+@keyframes flag { 0%, 100% { background: rgba(255, 107, 129, .08); } 50% { background: rgba(255, 107, 129, .2); } }
+.log-foot { padding: 8px 14px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: .68rem; color: #55608a; }
+
+/* sections */
+section { padding-block: 72px 0; scroll-margin-top: 56px; }
+.head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+.head p { margin: 0; font-family: var(--font-mono); font-size: .8rem; color: var(--violet); }
+
+/* projects */
+.proj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 20px 48px; padding-block: 28px; border-top: 1px solid var(--line); }
+.proj:first-of-type { border-top: 0; padding-top: 0; }
+h3 { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2; margin: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tags li { font-family: var(--font-mono); font-size: .72rem; padding: 3px 9px; border-radius: 4px; border: 1px solid var(--line); color: var(--violet); background: var(--surface); }
+.tags li.java { color: var(--cyan); border-color: rgba(34, 211, 238, .35); }
+.proj ul.pts { margin: 0; padding-left: 1.1em; }
+.proj ul.pts li { margin-bottom: 8px; }
+.proj ul.pts li::marker { color: var(--cyan); }
+.link { display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: .85rem; color: var(--cyan); text-underline-offset: 4px; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px 40px; margin: 0; }
+.skills div { min-width: 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.skills dt { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--violet); }
+.skills .main dt { color: var(--cyan); }
+.skills dd { margin: 8px 0 0; }
+.skills .main dd { font-weight: 600; font-size: 1.05rem; }
+
+/* experience + education rows */
+.row { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 4px 32px; padding-block: 22px; border-top: 1px solid var(--line); }
+.row:first-of-type { border-top: 0; padding-top: 0; }
+.when { font-family: var(--font-mono); font-size: .78rem; color: var(--muted); padding-top: 4px; font-variant-numeric: tabular-nums; }
+.row h3 { font-size: 1.15rem; }
+.org { color: var(--muted); margin: 2px 0 8px; }
+.row ul { margin: 0; padding-left: 1.1em; }
+.row li { margin-bottom: 6px; }
+.row li::marker { color: var(--violet); }
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0 40px; margin: 24px 0 0; padding: 0; list-style: none; }
+.certs li { padding: 12px 0; border-top: 1px solid var(--line); }
+.certs small { display: block; color: var(--muted); font-family: var(--font-mono); font-size: .72rem; }
+
+/* contact */
+.contact { padding-bottom: 72px; }
+.contact-box { border: 1px solid var(--line); border-radius: 12px; padding: clamp(24px, 5vw, 44px); background: linear-gradient(135deg, var(--surface), var(--surface-2)); }
+.contact-box h2 { max-width: 20ch; }
+.contact-box p { color: var(--muted); max-width: 52ch; margin: 12px 0 0; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+.mail code { font-family: var(--font-mono); font-size: 1rem; color: var(--cyan); user-select: all; overflow-wrap: anywhere; }
+.copy { font-family: var(--font-mono); font-size: .78rem; color: var(--fg); background: transparent; border: 1px solid var(--violet-deep); border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+.copy:hover { background: rgba(124, 92, 240, .16); }
+.social { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; }
+.social a { font-family: var(--font-mono); font-size: .85rem; color: var(--fg); text-underline-offset: 4px; }
+.social a:hover { color: var(--cyan); }
+footer { border-top: 1px solid var(--line); padding-block: 24px; font-family: var(--font-mono); font-size: .75rem; color: #55608a; }
+
+@media (max-width: 820px) {
+  .hero { padding-block: 40px 56px; }
+  .hero .in { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .proj { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+  section { padding-top: 56px; }
+}
+@media (max-width: 520px) { .bar nav { gap: 0 14px; } .bar nav a { font-size: .74rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .e { animation: none; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="in">
+    <a class="brand" href="#top">Divya<span>.</span>Patil</a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="in">
+      <div>
+        <p class="eyebrow">Java developer · Jalgaon, India</p>
+        <h1>Divya <em>Patil</em></h1>
+        <p class="lede">I build Java and Python backends, and tools that read their own logs.</p>
+        <p class="sub">Computer Engineering student with hands-on experience in Spring Boot, FastAPI and MySQL. I am looking for an entry-level Java Developer & Software Engineer role.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+        <dl class="facts">
+          <div><dt>CGPA</dt><dd>8.48</dd></div>
+          <div><dt>Degree</dt><dd>B.E. Computer Engineering, 2022–2026</dd></div>
+          <div><dt>Open to</dt><dd>Roles across India</dd></div>
+        </dl>
+      </div>
+
+      <figure class="log" style="margin:0" aria-label="Example output from the AI Log Analyzer project">
+        <div class="log-head"><span>ai-log-analyzer</span><b>sample output</b></div>
+        <pre class="log-body"><span class="i"><span class="t">10:42:07</span><span class="lv">INFO</span>POST /api/logs 202</span><span class="i"><span class="t">10:42:08</span><span class="lv">INFO</span>parsed 128 entries</span><span class="e"><span class="t">10:42:09</span><span class="lv">ERROR</span>db connection pool exhausted</span><span class="a"><span class="t">10:42:09</span><span class="lv">AI</span>severity: critical, likely connection leak</span><span class="i"><span class="t">10:42:11</span><span class="lv">INFO</span>dashboard updated</span></pre>
+        <div class="log-foot">Illustrative example, not real production data</div>
+      </figure>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="in">
+      <div class="head"><h2>Projects</h2><p>Java, Spring Boot, Python, FastAPI</p></div>
+
+      <article class="proj">
+        <div>
+          <h3>AI Log Analyzer for Application Monitoring</h3>
+          <ul class="tags" aria-label="Technologies">
+            <li>Python</li><li>FastAPI</li><li>MySQL</li><li>OpenAI API</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pts">
+            <li>Built and tested REST APIs with FastAPI to ingest and process application logs, enabling structured data analysis for monitoring.</li>
+            <li>Integrated the OpenAI API to parse logs and detect critical errors automatically, improving how quickly issues are identified.</li>
+            <li>Designed real-time monitoring dashboards for data visibility, trend tracking and application health checks.</li>
+          </ul>
+          <a class="link" href="https://github.com/divya-patil123/AI-Log-Analyzer">View on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div>
+          <h3>Faculty Management System</h3>
+          <ul class="tags" aria-label="Technologies">
+            <li class="java">Java</li><li class="java">Spring Boot</li><li>JDBC</li><li>MySQL</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pts">
+            <li>Analyzed requirements, then built and tested CRUD REST APIs in Spring Boot to manage faculty records with reliable data operations.</li>
+            <li>Found and fixed data-handling issues during development, improving data consistency.</li>
+            <li>Optimized SQL queries to speed up data retrieval and application performance.</li>
+          </ul>
+          <a class="link" href="https://github.com/divya-patil123/Faculty-Career-Advancement-System">View on GitHub →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="in">
+      <div class="head"><h2>Skills</h2><p>Java first</p></div>
+      <dl class="skills">
+        <div class="main"><dt>Java stack</dt><dd>Java, Spring Boot, JDBC, REST APIs</dd></div>
+        <div><dt>Python and AI</dt><dd>Python, FastAPI, OpenAI API integration, log parsing and analysis, monitoring dashboards</dd></div>
+        <div><dt>Databases</dt><dd>MySQL, SQL, query optimization, relational database fundamentals</dd></div>
+        <div><dt>Frontend</dt><dd>HTML5, CSS3, JavaScript, React.js</dd></div>
+        <div><dt>Other languages</dt><dd>C, C++</dd></div>
+        <div><dt>Tools</dt><dd>Git, GitHub, VS Code, Docker (basic), Linux (basic)</dd></div>
+        <div><dt>Core concepts</dt><dd>Object-Oriented Programming, Data Structures and Algorithms, DBMS, Operating Systems, Computer Networks</dd></div>
+        <div><dt>Practices</dt><dd>SDLC and Agile basics, requirement analysis, debugging and issue resolution</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="in">
+      <div class="head"><h2>Experience</h2><p>Two internships</p></div>
+
+      <div class="row">
+        <div class="when">Jun 2025 – Mar 2026</div>
+        <div>
+          <h3>IT Support Intern</h3>
+          <p class="org">Soyo Systems, Jalgaon</p>
+          <ul>
+            <li>Completed a nine-month IT Support internship at certified company.</li>
+          </ul>
+          <a class="link" href="https://drive.google.com/file/d/11otkrvS4yOmTaqnCCf4phiZB8Be5m9HX/view?usp=drive_link">View certificate →</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Jul 2024 – Jan 2025</div>
+        <div>
+          <h3>Web Developer Intern</h3>
+          <p class="org">NIK Enterprises Pvt. Ltd., Jalgaon</p>
+          <ul>
+            <li>Completed a six-month summer internship in web development with PHP and MySQL.</li>
+            <li>Developed and customized responsive websites using HTML, CSS and JavaScript.</li>
+            <li>Implemented and tested page layouts and functionality for a consistent design across pages.</li>
+          </ul>
+          <a class="link" href="https://drive.google.com/file/d/1Nm_4fGlKyuT7mme7ZoyUMoygQ2rB6_8r/view?usp=sharing">View certificate →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="in">
+      <div class="head"><h2>Education</h2><p>CGPA 8.48</p></div>
+
+      <div class="row">
+        <div class="when">2022 – 2026</div>
+        <div>
+          <h3>B.E. in Computer Engineering</h3>
+          <p class="org">SSBT's College of Engineering and Technology, Jalgaon</p>
+          <ul>
+            <li>CGPA: 8.48</li>
+            <li>Took part in the Hackathon at Milestone 2024, building a full-stack solution as a team under time limits.</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="certs" aria-label="Certifications">
+        <li>Java Programming (Core and Advanced)<small>Info Planet, Jalgaon · March 2025</small></li>
+        <li>Git and GitHub Certification</li>
+        <li>AI Fundamentals Certification</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="in">
+      <div class="contact-box">
+        <h2>Let's talk about your next Java hire.</h2>
+        <p>I am open to entry-level Java Developer & Software Engineer roles. Email is the fastest way to reach me.</p>
+        <div class="mail">
+          <code id="email">diupatil2604@gmail.com</code>
+          <button class="copy" id="copy" type="button">Copy email</button>
+        </div>
+        <div class="social">
+          <a href="https://www.linkedin.com/in/divya-patil-4ab8a2295">LinkedIn</a>
+          <a href="https://github.com/divya-patil123">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">© Divya Patil · B.E. Computer Engineering, Jalgaon, Maharashtra</div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var mail = document.getElementById('email');
+  function select() {
+    var r = document.createRange(); r.selectNodeContents(mail);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var done = function (msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(mail.textContent).then(function () { done('Copied'); }, function () { select(); done('Press Ctrl+C'); });
+    } catch (e) { select(); done('Press Ctrl+C'); }
+  });
+})();
+</script>
+</body>
+</html>
